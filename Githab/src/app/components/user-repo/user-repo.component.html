@@ -34,8 +34,8 @@
   <div *ngFor="let user of users" class="card ml-auto" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">{{ user.full_name }}</h5>
-      <p class="card-text">{{ user.html_url }}</p>
-      <button class="btn btn-primary">Details</button>
+      <p class="card-text">{{ user.description }}</p>
+      <button (click)="detailsEvent(user.full_name)" class="btn btn-primary">Details</button>
     </div>
   </div>
 </section>

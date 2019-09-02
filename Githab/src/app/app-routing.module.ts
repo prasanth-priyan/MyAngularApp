@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserSearchComponent } from './components/user-search/user-search.component'
 import { UserRepoComponent } from './components/user-repo/user-repo.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RepoDetailsComponent } from './components/repo-details/repo-details.component';
 
 
 const routes: Routes = [
   { path:'user', component:UserRepoComponent },
   { path:'search/:query', component:UserSearchComponent },
-  //{ path:'' },
+  { path:'repos/:query', component:RepoDetailsComponent },
   { path:'', redirectTo:'/user', pathMatch:'full' },
   { path:'**', component:PageNotFoundComponent  }
 ];

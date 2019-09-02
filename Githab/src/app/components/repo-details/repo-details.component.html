@@ -1,1 +1,7 @@
-<p>repo-details works!</p>
+<section class="jumbotron jumbotron-fluid">
+    <h1 class="display-4">{{repo.name}} - {{repo.owner.login}}</h1>
+    <a href="{{repo.html_url}}">{{repo.html_url}}</a>
+    <hr class="my-4">
+    <p class="lead">{{repo.description}}</p>
+    <span>{{repo.created_at}}</span>
+</section>

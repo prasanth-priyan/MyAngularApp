@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GithabSearchService } from 'src/app/services/githab-search.service';
-import { Observable } from 'rxjs';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 
 @Component({
@@ -10,9 +9,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./user-search.component.css']
 })
 export class UserSearchComponent implements OnInit {
-  private repos = new Observable;
+  repos:any;
   public query="";
-  constructor(private _githabSearch: GithabSearchService, private route:ActivatedRoute) {
+  constructor(private _githabSearch: GithabSearchService, private route:ActivatedRoute,private router:Router) {
     
   }
 
@@ -22,6 +21,9 @@ export class UserSearchComponent implements OnInit {
       this.repos = repos.items;
       console.log(this.repos);
     });
+  }
+  detailsEvent(query){
+    this.router.navigate(['/repos',query]);
   }
 
 }

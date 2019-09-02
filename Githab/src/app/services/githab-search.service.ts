@@ -6,13 +6,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class GithabSearchService {
   
+  _url="https://api.github.com/search/repositories?q=";
   constructor(private http:HttpClient) { }
   options = {
     headers: new HttpHeaders({
-      'Authorization': 'token 407455f4c41c6115f03d66e4c45cf37267931a9e'
+      'Authorization': 'token 5817c75fad4c3f91d9c9245ecb6fa67eef4bb020'
     })
   }
  getRepo(query){
-   return this.http.get("https://api.github.com/search/repositories?q="+query, this.options);
+   return this.http.get(this._url+query, this.options);
  }
 }
