@@ -1,0 +1,9 @@
+<section class="container-fluid d-flex flex-wrap">
+  <div *ngFor="let repo of repos" class="card ml-auto" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ repo.name }}</h5>
+      <p class="card-text">{{ repo.html_url }}</p>
+      <button (click)="DetailsEvent()" class="btn btn-primary">Details</button>
+    </div>
+  </div>
+</section>
