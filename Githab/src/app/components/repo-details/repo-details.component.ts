@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { GithabRepoService } from 'src/app/services/githab-repo.service';
 
 
@@ -11,9 +11,10 @@ import { GithabRepoService } from 'src/app/services/githab-repo.service';
 export class RepoDetailsComponent implements OnInit {
 
   repo:any;
-  public query="";
+  public val:string;
+  public query:string;
 
-  constructor(private _githabRepo: GithabRepoService, private route:ActivatedRoute) {}
+  constructor(private _githabRepo: GithabRepoService, private route:ActivatedRoute,private router:Router) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((params:ParamMap) => this.query=params.get('query'));
@@ -22,5 +23,7 @@ export class RepoDetailsComponent implements OnInit {
       console.log(this.repo);
     });
   }
-
+  searchEvent(){
+    this.router.navigate(['/search',this.val]);
+  }
 }

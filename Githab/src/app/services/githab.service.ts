@@ -11,7 +11,7 @@ export class GithabService {
    }
    options = {
      headers: new HttpHeaders({
-       'Authorization': 'token 5817c75fad4c3f91d9c9245ecb6fa67eef4bb020'
+       'Authorization': 'token bfed737f389ce42f8a8ed29a50a8cd890d105641'
      })
    }
   getUser(){

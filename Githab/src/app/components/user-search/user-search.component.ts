@@ -10,7 +10,8 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 })
 export class UserSearchComponent implements OnInit {
   repos:any;
-  public query="";
+  public val:string;
+  public query:string;
   constructor(private _githabSearch: GithabSearchService, private route:ActivatedRoute,private router:Router) {
     
   }
@@ -21,6 +22,9 @@ export class UserSearchComponent implements OnInit {
       this.repos = repos.items;
       console.log(this.repos);
     });
+  }
+  searchEvent(){
+    this.router.navigate(['/search',this.val]);
   }
   detailsEvent(query){
     this.router.navigate(['/repos',query]);
