@@ -11,6 +11,10 @@ import { GithabService } from './services/githab.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RepoDetailsComponent } from './components/repo-details/repo-details.component';
 import { FavListComponent } from './components/fav-list/fav-list.component';
+import { GithabSearchService } from './services/githab-search.service';
+import { GithabRepoService } from './services/githab-repo.service';
+import { FavoriteService } from './services/favorite.service';
+import { RepoDataService } from './services/repo-data.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,7 @@ import { FavListComponent } from './components/fav-list/fav-list.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [GithabService],
+  providers: [GithabService, GithabSearchService, GithabRepoService, FavoriteService, RepoDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
