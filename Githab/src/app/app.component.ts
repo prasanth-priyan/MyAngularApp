@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -9,7 +10,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Githab';
-  constructor(){
-
+  public val:string;
+  constructor(private router:Router){
   }
+  searchEvent(){
+    this.router.navigate(['/search',this.val]);
+  }
+
 }

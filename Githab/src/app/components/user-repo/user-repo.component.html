@@ -1,55 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="/user" routerLinkActive="active"
-    >GitHab</a
-  >
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <form class="form-inline my-2 my-lg-0 ml-auto">
-    <input
-      [(ngModel)]="val"
-      class="form-control mr-sm-2"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-      name="text"
-    />
-    <button
-      (click)="searchEvent()"
-      class="btn btn-outline-success my-2 my-sm-0"
-      type="submit"
-    >
-      Search
-    </button>
-  </form>
-</nav>
 
 <section class="jumbotron jumbotron-fluid">
   <h1 class="display-4 text-center">My Repositories</h1>
 </section>
 
 <section class="container-fluid d-flex flex-wrap">
-  <div *ngFor="let user of users" class="card ml-2" style="width: 18rem;">
+  <div *ngFor="let repo of repos" class="card ml-2" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">{{ user.full_name }}</h5>
-      <p class="card-text">{{ user.description }}</p>
+      <h5 class="card-title">{{ repo.full_name }}</h5>
+      <p class="card-text">{{ repo.description }}</p>
     </div>
     <div class="card-footer">
-      <button (click)="detailsEvent(user.full_name)" class="btn btn-primary">
+      <button (click)="detailsEvent(repo.full_name)" class="btn btn-primary">
         Details
       </button>
-      <button (click)="deleteEvent(user.full_name)" class="btn btn-outline-danger">
-          Delete
-        </button>
+      <button
+        (click)="deleteEvent(repo.full_name)"
+        class="btn btn-outline-danger"
+      >
+        Delete
+      </button>
+      <button (click)="favEvent(repo)" class="btn btn-outline-dark">
+        <i class="far fa-heart"></i>
+      </button>
     </div>
   </div>
 </section>
@@ -88,8 +60,8 @@
       </div>
       <div class="modal-body">
         <form
-          #userRegForm="ngForm"
-          (ngSubmit)="userRegForm.form.valid && newRepo(userRegForm.value)"
+          #repoRegForm="ngForm"
+          (ngSubmit)="repoRegForm.form.valid && newRepo(repoRegForm.value)"
           novalidate
         >
           <div class="form-group">
@@ -99,17 +71,17 @@
               placeholder="Name"
               name="name"
               [(ngModel)]="name"
-              #username="ngModel"
+              #reponame="ngModel"
               [ngClass]="{
-                'is-invalid': userRegForm.submitted && username.invalid
+                'is-invalid': repoRegForm.submitted && reponame.invalid
               }"
               required
             />
             <div
-              *ngIf="userRegForm.submitted && username.invalid"
+              *ngIf="repoRegForm.submitted && reponame.invalid"
               class="invalid-feedback"
             >
-              <div *ngIf="username.errors.required" class="alert-danger">
+              <div *ngIf="reponame.errors.required" class="alert-danger">
                 Name is required
               </div>
             </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { GithabService } from 'src/app/services/githab.service';
 import { RepoDataService } from 'src/app/services/repo-data.service';
+import { FavoriteService } from 'src/app/services/favorite.service';
 
 @Component({
   selector: 'user-repo',
@@ -11,18 +12,15 @@ import { RepoDataService } from 'src/app/services/repo-data.service';
 export class UserRepoComponent implements OnInit {
 
   
-  public val;
-  private users:any;
-  constructor(private _githabService:GithabService,private repodataService:RepoDataService ,private router:Router){
-    this._githabService.getUser().subscribe((user:any) => {
-      this.users=user;
-      console.log(this.users);
+  public val:string;
+  private repos:any;
+  constructor(private _githabService:GithabService,private repodataService:RepoDataService ,private favService:FavoriteService,private router:Router){
+    this._githabService.getUser().subscribe((repos:any) => {
+      this.repos=repos;
+      console.log(this.repos);
     });
   }
   ngOnInit() {
-  }
-  searchEvent(){
-    this.router.navigate(['/search',this.val]);
   }
   detailsEvent(query){
     this.router.navigate(['/repos',query]);
@@ -36,5 +34,8 @@ export class UserRepoComponent implements OnInit {
     this.repodataService.newRepository(repodata).subscribe((response)=>{
       console.log(response);
      }); 
+  }
+  favEvent(repo){
+    this.favService.addRepo(repo).subscribe();
   }
 }

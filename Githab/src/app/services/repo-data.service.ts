@@ -12,7 +12,7 @@ export class RepoDataService {
   options = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'token bfed737f389ce42f8a8ed29a50a8cd890d105641'
+      'Authorization': 'token ca590bad4bb3ef8177deb5c18e5f5f2ee3fff809'
     })
   }
   newRepository(obj) {

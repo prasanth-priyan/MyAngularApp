@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GithabSearchService } from 'src/app/services/githab-search.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { FavoriteService } from 'src/app/services/favorite.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class UserSearchComponent implements OnInit {
   repos:any;
   public val:string;
   public query:string;
-  constructor(private _githabSearch: GithabSearchService, private route:ActivatedRoute,private router:Router) {
+  constructor(private _githabSearch: GithabSearchService, private route:ActivatedRoute,private router:Router,private favService:FavoriteService) {
     
   }
 
@@ -23,11 +24,10 @@ export class UserSearchComponent implements OnInit {
       console.log(this.repos);
     });
   }
-  searchEvent(){
-    this.router.navigate(['/search',this.val]);
-  }
   detailsEvent(query){
     this.router.navigate(['/repos',query]);
   }
-
+  favEvent(repo){
+    this.favService.addRepo(repo).subscribe();
+  }
 }

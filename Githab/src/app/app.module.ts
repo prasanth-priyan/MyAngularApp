@@ -10,6 +10,7 @@ import { UserSearchComponent } from './components/user-search/user-search.compon
 import { GithabService } from './services/githab.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RepoDetailsComponent } from './components/repo-details/repo-details.component';
+import { FavListComponent } from './components/fav-list/fav-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RepoDetailsComponent } from './components/repo-details/repo-details.com
     UserRepoComponent,
     UserSearchComponent,
     PageNotFoundComponent,
-    RepoDetailsComponent
+    RepoDetailsComponent,
+    FavListComponent
   ],
   imports: [
     BrowserModule,

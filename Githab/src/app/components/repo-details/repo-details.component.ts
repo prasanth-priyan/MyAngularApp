@@ -23,7 +23,4 @@ export class RepoDetailsComponent implements OnInit {
       console.log(this.repo);
     });
   }
-  searchEvent(){
-    this.router.navigate(['/search',this.val]);
-  }
 }

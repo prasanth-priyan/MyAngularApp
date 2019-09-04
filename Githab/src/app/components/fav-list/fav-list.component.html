@@ -1,0 +1,24 @@
+
+<section class="jumbotron jumbotron-fluid">
+  <h1 class="display-4 text-center">My Favorite Repositories</h1>
+</section>
+
+<section class="container-fluid d-flex flex-wrap">
+  <div *ngFor="let repo of repos" class="card ml-2" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ repo.full_name }}</h5>
+      <p class="card-text">{{ repo.description }}</p>
+    </div>
+    <div class="card-footer">
+      <button (click)="detailsEvent(repo.full_name)" class="btn btn-primary">
+        Details
+      </button>
+      <button
+        (click)="deleteEvent(repo.id)"
+        class="btn btn-outline-danger"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</section>
