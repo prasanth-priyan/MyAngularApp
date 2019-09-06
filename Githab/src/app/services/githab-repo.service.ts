@@ -10,7 +10,7 @@ export class GithabRepoService {
   constructor(private http:HttpClient) { }
   options = {
     headers: new HttpHeaders({
-      'Authorization': 'token ca590bad4bb3ef8177deb5c18e5f5f2ee3fff809'
+      'Authorization': 'token c470328a6c4647a31a2c824f72250f4cd9b6e15a'
     })
   }
  getDetails(query){
